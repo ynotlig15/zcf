@@ -1,0 +1,113 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receba sua Conta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0e17;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 2;
+            text-align: left;
+            width: 70%;  /* Ajustando para 70% da largura */
+        }
+        h1 {
+            color: #00ff88;
+            font-size: 1.5rem;
+        }
+        .btn {
+            background: #00ff88;
+            color: #0a0e17;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #00cc66;
+        }
+        #countdown {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #00ff88;
+        }
+        #accountInfo {
+            display: none;
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #00ff88;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <!-- O vídeo irá rodar automaticamente ao abrir a página devido ao "autoplay=1" -->
+        <iframe src="https://www.youtube.com/embed/VoamfEep4ZA?autoplay=1&amp;controls=1&amp;disablekb=1&amp;fs=1&amp;modestbranding=1&amp;rel=0" allow="autoplay" allowfullscreen=""></iframe>
+    </div>
+    
+    <div class="container">
+        <h1>Clique no botão para receber sua conta</h1>
+        <button class="btn" onclick="startCountdown()">Receber Conta</button>
+        <div id="countdown"></div>
+        <div id="accountInfo">Aqui está seu login e sua senha:<br>Login: <b>02xana22</b><br>Senha: <b>02xana22</b><br>Bom jogo!</div>
+    </div>
+    
+    <script>
+        function startCountdown() {
+            let timeLeft = 240;
+            const countdownElement = document.getElementById("countdown");
+            const accountInfo = document.getElementById("accountInfo");
+            
+            countdownElement.innerHTML = `Aguarde ${timeLeft} segundos...`;
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                countdownElement.innerHTML = `Aguarde ${timeLeft} segundos...`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    countdownElement.style.display = "none";
+                    accountInfo.style.display = "block";
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
